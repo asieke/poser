@@ -89,6 +89,10 @@ export const llmProviderSchema = z.discriminatedUnion('type', [
       })
       .optional(),
   }),
+  z.object({
+    type: z.literal('sieke'),
+    ...baseLlmProviderSchema.shape,
+  }),
 ])
 
 export type LLMProvider = z.infer<typeof llmProviderSchema>

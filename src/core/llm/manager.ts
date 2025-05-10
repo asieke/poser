@@ -16,6 +16,7 @@ import { OpenAIAuthenticatedProvider } from './openai'
 import { OpenAICompatibleProvider } from './openaiCompatibleProvider'
 import { OpenRouterProvider } from './openRouterProvider'
 import { PerplexityProvider } from './perplexityProvider'
+import { SiekeLLMProvider } from './sieke'
 
 /*
  * OpenAI, OpenAI-compatible, and Anthropic providers include token usage statistics
@@ -74,6 +75,9 @@ export function getProviderClient({
     }
     case 'openai-compatible': {
       return new OpenAICompatibleProvider(provider)
+    }
+    case 'sieke': {
+      return new SiekeLLMProvider(provider)
     }
   }
 }

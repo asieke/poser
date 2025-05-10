@@ -172,6 +172,14 @@ export const PROVIDER_TYPES_INFO = {
       },
     ],
   },
+  sieke: {
+    label: 'Sieke LLM',
+    defaultProviderId: 'sieke_default',
+    requireApiKey: false,
+    requireBaseUrl: false,
+    supportEmbedding: false,
+    additionalSettings: [],
+  },
 } as const satisfies Record<
   LLMProviderType,
   {
@@ -240,6 +248,10 @@ export const DEFAULT_PROVIDERS: readonly LLMProvider[] = [
   {
     type: 'morph',
     id: PROVIDER_TYPES_INFO.morph.defaultProviderId,
+  },
+  {
+    type: 'sieke',
+    id: PROVIDER_TYPES_INFO.sieke.defaultProviderId!,
   },
 ]
 
@@ -418,6 +430,12 @@ export const DEFAULT_CHAT_MODELS: readonly ChatModel[] = [
     providerId: PROVIDER_TYPES_INFO.morph.defaultProviderId,
     id: 'morph-v0',
     model: 'morph-v0',
+  },
+  {
+    providerType: 'sieke',
+    providerId: PROVIDER_TYPES_INFO.sieke.defaultProviderId!,
+    id: 'sieke-default-chat',
+    model: 'sieke-chat-v1',
   },
 ]
 

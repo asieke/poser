@@ -1,10 +1,10 @@
 {
-  "id": "smart-composer",
-  "name": "Smart Composer",
+  "id": "smart-poser",
+  "name": "Smart Poser",
   "version": "1.2.1",
   "minAppVersion": "0.15.0",
-  "description": "AI chat with note context, smart writing assistance, and one-click edits for your vault.",
-  "author": "Heesu Suh",
+  "description": "Siekechu AI system",
+  "author": "Alex Sieke",
   "authorUrl": "https://github.com/glowingjade",
   "fundingUrl": "https://buymeacoffee.com/kevin.on",
   "isDesktopOnly": false
