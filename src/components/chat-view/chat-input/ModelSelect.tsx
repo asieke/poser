@@ -7,6 +7,14 @@ import { useSettings } from '../../../contexts/settings-context'
 export function ModelSelect() {
   const { settings, setSettings } = useSettings()
   const [isOpen, setIsOpen] = useState(false)
+
+  // Filter models to only show Gemini and Sieke Research models
+  const filteredModels = settings.chatModels.filter(
+    (model) =>
+      (model.providerType === 'gemini' || model.providerType === 'sieke') &&
+      (model.enable ?? true)
+  )
+
   return (
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenu.Trigger className="smtcmp-chat-input-model-select">
@@ -21,22 +29,20 @@ export function ModelSelect() {
       <DropdownMenu.Portal>
         <DropdownMenu.Content className="smtcmp-popover">
           <ul>
-            {settings.chatModels
-              .filter(({ enable }) => enable ?? true)
-              .map((chatModelOption) => (
-                <DropdownMenu.Item
-                  key={chatModelOption.id}
-                  onSelect={() => {
-                    setSettings({
-                      ...settings,
-                      chatModelId: chatModelOption.id,
-                    })
-                  }}
-                  asChild
-                >
-                  <li>{chatModelOption.id}</li>
-                </DropdownMenu.Item>
-              ))}
+            {filteredModels.map((chatModelOption) => (
+              <DropdownMenu.Item
+                key={chatModelOption.id}
+                onSelect={() => {
+                  setSettings({
+                    ...settings,
+                    chatModelId: chatModelOption.id,
+                  })
+                }}
+                asChild
+              >
+                <li>{chatModelOption.id}</li>
+              </DropdownMenu.Item>
+            ))}
           </ul>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
